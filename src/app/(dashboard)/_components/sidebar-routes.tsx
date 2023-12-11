@@ -1,6 +1,7 @@
 'use client'
-import {Layout, Compass} from "lucide-react"
+import {Layout, Compass, List, BookAudioIcon} from "lucide-react"
 import SidebarItem from "./sidebar-item";
+import { usePathname } from "next/navigation";
 const guestRoutes = [
     {
         icon: Layout,
@@ -13,8 +14,26 @@ const guestRoutes = [
         href: "/search"
     }
 ]
+
+const managerRoutes = [
+    {
+        icon: List,
+        label: "控制台",
+        href: "/manager/main"
+    },
+    {
+        icon: BookAudioIcon,
+        label: "文章",
+        href: "/manager/posts"
+    }
+]
 const SidebarRoutes = () => {
-    const routes = guestRoutes;
+    const pathname = usePathname()
+
+    const isManager = pathname.startsWith("/manager")
+
+    const routes = isManager ? managerRoutes : guestRoutes;
+
     return ( 
         <div className="flex flex-col w-full">
             {

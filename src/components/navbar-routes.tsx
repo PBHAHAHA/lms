@@ -19,7 +19,7 @@ const NavbarRoutes = () => {
                         退出登录
                     </Button>
                 ) : (
-                    <Link href="/manager/course">
+                    <Link href="/manager/posts">
                         <Button size="sm" variant="ghost">登录</Button>
                     </Link>
                 )
